@@ -49,6 +49,10 @@
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- smooch -->
+    <script>
+        !function(o,d,s,e,f){var i,a,p,c=[],h=[];function t(){var t="You must provide a supported major version.";try{if(!f)throw new Error(t);var e,n="https://cdn.smooch.io/",r="smooch";e="string"==typeof this.response?JSON.parse(this.response):this.response;var o=f.match(/([0-9]+)\.?([0-9]+)?\.?([0-9]+)?/),s=o&&o[1],i=o&&o[2],a=o&&o[3],p=e["v"+s],c=e["v"+s+"."+i+".patch"];if(e.url||p||c){var h=d.getElementsByTagName("script")[0],u=d.createElement("script");if(u.async=!0,a)u.src=c||n+r+"."+f+".min.js";else{if(!(5<=s&&p))throw new Error(t);u.src=p}h.parentNode.insertBefore(u,h)}}catch(e){e.message===t&&console.error(e)}}o[s]={init:function(){i=arguments;var t={then:function(e){return h.push({type:"t",next:e}),t},catch:function(e){return h.push({type:"c",next:e}),t}};return t},on:function(){c.push(arguments)},render:function(){a=arguments},destroy:function(){p=arguments}},o.__onWebMessengerHostReady__=function(e){if(delete o.__onWebMessengerHostReady__,o[s]=e,i)for(var t=e.init.apply(e,i),n=0;n<h.length;n++){var r=h[n];t="t"===r.type?t.then(r.next):t.catch(r.next)}a&&e.render.apply(e,a),p&&e.destroy.apply(e,p);for(n=0;n<c.length;n++)e.on.apply(e,c[n])};var n=new XMLHttpRequest;n.addEventListener("load",t),n.open("GET","https://"+e+".webloader.smooch.io/",!0),n.responseType="json",n.send()}(window,document,"Smooch","5efb8d0407910c000c9c66a1","5");
+    </script>
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
@@ -723,6 +727,83 @@
 
     <!-- Main -->
     <script src="js/main.js"></script>
+    <script>
+      const agent = 'B0CB8EFE-53E9-410C-837B-715CE6F47FA5' //  "b94571c2-1bd3-4ec1-8789-d939fa680f89"; //"788ce9ba-93e3-41a2-88bd-9bf2254c0ce8";
+      const delegate = {
+        beforeSend(message, data) {
+          /* if (data.conversation.id === '<conversation-id>' && message.role === 'user') {
+              message.metadata = {
+                  ...message.metadata,
+                  currentUrl: window.location.href
+              };
+          } */
+          message.metadata = {
+            ...message.metadata,
+            agent,
+          };
+          return message;
+        },
+      };
+      Smooch.init({
+        delegate,
+        integrationId:'5efb8d0407910c000c9c66a1', // [Auria]"62deaa89bc120d00efffef7a",
+        menuItems: {
+          imageUpload: false,
+          fileUpload: false,
+          shareLocation: false,
+        },
+        customColors: {
+          brandColor: "1b79ae",
+          conversationColor: "1b79ae",
+          actionColor: "1b79ae",
+        },
+
+        customText: {
+          syncConversation: "Sincronizar conversa",
+          linkChannelPageHeader: "Sincronizar sua conversa",
+          connectNotificationText:
+            "Sincronize sua conversa e continue nos enviando mensagens através do seu aplicativo favorito.",
+          viberChannelDescription:
+            "Conecte sua conta do Viber para ser notificado quando receber uma resposta e continue a conversa no Viber. Para começar, digitalize o código QR usando o aplicativo Viber.",
+          telegramChannelDescription:
+            "Conecte sua conta do Telegram para ser notificado quando receber uma resposta e continuar a conversa no Telegram",
+          messengerChannelDescription:
+            "Conecte sua conta do Facebook Messenger para ser notificado quando receber uma resposta e continue a conversa no Facebook Messenger.",
+          //Labels da caixa de envio
+          headerText: "Posso ajudar?",
+          inputPlaceholder: "Digite a mensagem...",
+          sendButtonText: "Enviar",
+          //Labels de Tempo
+          conversationListTimestampFormat: "D/MM/YYYY",
+          conversationTimestampHeaderFormat: "D/MM/YYYY, HH:MM",
+          conversationListHeaderText: "Minhas Conversas",
+          conversationListRelativeTimeJustNow: "Agora Mesmo!",
+          conversationListPreviewUserText: "Você",
+          conversationListRelativeTimeMinute: "1 minutos atrás",
+          conversationListRelativeTimeMinutes: "{value} minutos atrás",
+          conversationListRelativeTimeHour: "1 hora atrás",
+          conversationListRelativeTimeHours: "{value} horas atrás",
+          conversationListRelativeTimeYesterday: "Ontem",
+          messageIndicatorTitlePlural: "({count}) Novas mensagens",
+          messageIndicatorTitleSingular: "({count}) Nova mensagem",
+          messageRelativeTimeDay: "{value}d atrás",
+          messageRelativeTimeHour: "{value}h atrás",
+          messageRelativeTimeJustNow: "Agora Mesmo!",
+          messageRelativeTimeMinute: "{value}m atrás",
+          messageTimestampFormat: "HH:MM",
+          messageDelivered: "Entregue",
+          messageSeen: "Visto",
+          messageSending: "Enviando ...",
+          newConversationButtonText: "Nova Conversa",
+        },
+        /* customColors: {
+            brandColor: '65758e',
+            conversationColor: '65758e',
+            actionColor: '65758e',
+        }, */
+      });
+    
+    </script>
 
 </body>
 
